@@ -25,6 +25,8 @@ var flipCard = function(cardId) {
 	flipCard(0);
 	flipCard(1);
 
+//	test
+
 
 
 
