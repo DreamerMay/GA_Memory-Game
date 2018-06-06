@@ -22,11 +22,8 @@ var cards = [
 	}
 ];
 var cardsInPlay = [ ]; 
-// var cardId;
 
-
-
-checkForMatch = function() {
+var checkForMatch = function() {
 	if (cardsInPlay.length === 2 && cardsInPlay[0] ===  cardsInPlay[1]) {
 		result = alert ("You found a match!");
 	} else if 
@@ -37,40 +34,33 @@ checkForMatch = function() {
 
 	//missing pop up alert message :( need to fix this 
 
-var flipCard = function(cardId) {
+var flipCard = function() {
+	var cardId = this.getAttribute('data-id');
 	console.log ("User flipped " + cards[cardId].rank);
 	cardsInPlay.push(cards[cardId].rank);
-	
 	console.log(cards[cardId].cardImage);
 	console.log(cards[cardId].suit);
+	this.setAttribute('src', card[cardId].cardImage);
 	checkForMatch();
-	}
+	};
 	
-	flipCard(0);
-	flipCard(2);
+var createBoard = function() {
+	for (var i=0; i<cards.length; i++){
+	var cardElement = document.createElement('img');
+	cardElement.setAttribute('src', 'image/back.png');
+	cardElement.setAttribute('data-id', i);
+	cardElement.addEventListener('click', flipcard);
+	document.getElementById('game-board').appendChild(cardElement);
+	}
+};
 
-//	test
+createBoard();
 
-
-
-
-//var cardOne = cards[0];
-//cardsInPlay.push(cardOne);
-//console.log("User flipped " + cardOne);
-
-//var cardTwo = cards[2];ß
-//cardsInPlay.push(cardTwo);
-//console.log("user flipped " + cardsTwo)
-
-//if (cardsInPlay.length === 2 && cardsInPlay [0] === cardsInPlay[1]) {
-//	alert ( "you have got a match!"); 
-//	} else { alert ("Sorry, try again");
-//};
+flipCard(0);
+flipCard(2);
 
 
 
 
-//console.log("User flipped " + cardOne);
-//console.log("User flipped " + cardFour);
 
 
