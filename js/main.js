@@ -24,40 +24,51 @@ var cards = [
 var cardsInPlay = [ ]; 
 
 var checkForMatch = function() {
-	if (cardsInPlay.length === 2 && cardsInPlay[0] ===  cardsInPlay[1]) {
-		result = alert ("You found a match!");
-	} else if 
-		(cardsInPlay.length === 2 && cardsInPlay[0] !== cardsInPlay[1]) {
-		result = alert ("Sorry, try again.");
-				}	
+	if (cardsInPlay[0] ===  cardsInPlay[1]) {
+		alert ("You found a match!");
+	} 
+	else {
+			alert ("Sorry, try again.");
+		}
+		refresh(3000);	
 	};
 
-	//missing pop up alert message :( need to fix this 
+function refresh(timeout){
+	setTimeout(() => {
+		window.location.reload(true);
+	}, timeout);
+}
 
 var flipCard = function() {
 	var cardId = this.getAttribute('data-id');
-	console.log ("User flipped " + cards[cardId].rank);
 	cardsInPlay.push(cards[cardId].rank);
+	console.log ("User flipped " + cards[cardId].rank);
 	console.log(cards[cardId].cardImage);
 	console.log(cards[cardId].suit);
-	this.setAttribute('src', card[cardId].cardImage);
-	checkForMatch();
+	var card=cards[cardId].cardImage;
+	this.setAttribute('src', card);
+	if (cardsInPlay.length === 2) {
+		checkForMatch();
+	} 
+	if (cardsInPlay.lenght >= 3) {
+		alert ("Refresh your page.");
+	}
 	};
 	
 var createBoard = function() {
 	for (var i=0; i<cards.length; i++){
-	var cardElement = document.createElement('img');
-	cardElement.setAttribute('src', 'image/back.png');
-	cardElement.setAttribute('data-id', i);
-	cardElement.addEventListener('click', flipcard);
-	document.getElementById('game-board').appendChild(cardElement);
+		var cardElement = document.createElement('img');
+		cardElement.setAttribute('src', 'images/back.png');
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardElement);
 	}
 };
 
 createBoard();
 
-flipCard(0);
-flipCard(2);
+//flipCard(0);
+//flipCard(2);
 
 
 

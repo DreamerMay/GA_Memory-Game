@@ -70,6 +70,10 @@ p{
 
 }
 
+.coright, .message{
+	font-family: Raleway; 
+}
+
 .copyright {
 	float: left;
 	}
