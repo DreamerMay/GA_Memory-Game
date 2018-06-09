@@ -30,29 +30,28 @@ var checkForMatch = function() {
 	else {
 			alert ("Sorry, try again.");
 		}
-		refresh(3000);	
+//		refresh(3000);	
 	};
 
-function refresh(timeout){
-	setTimeout(() => {
-		window.location.reload(true);
-	}, timeout);
-}
+// function refresh(timeout){
+// 	setTimeout(() => {
+// 		window.location.reload(true);
+// 	}, timeout);
+// }
 
 var flipCard = function() {
 	var cardId = this.getAttribute('data-id');
 	cardsInPlay.push(cards[cardId].rank);
 	console.log ("User flipped " + cards[cardId].rank);
-	console.log(cards[cardId].cardImage);
 	console.log(cards[cardId].suit);
-	var card=cards[cardId].cardImage;
-	this.setAttribute('src', card);
+	console.log(cards[cardId].cardImage);
+	this.setAttribute('src', cards[cardId].cardImage);
 	if (cardsInPlay.length === 2) {
 		checkForMatch();
 	} 
-	if (cardsInPlay.lenght >= 3) {
-		alert ("Refresh your page.");
-	}
+	// if (cardsInPlay.lenght >= 3) {
+	// 	alert ("Refresh your page.");
+	// }
 	};
 	
 var createBoard = function() {
